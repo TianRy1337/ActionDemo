@@ -1,0 +1,17 @@
+on:
+  push:
+    branches: [ "main" ]
+name: Discord Notification
+
+jobs:
+  notify:
+    name: Discord Notification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Discord Notifier
+        uses: fateyan/action-discord-notifier@v1.2.0
+        with:
+          message-title: New Pushed On 'main'
+          webhook: ${{secrets.DISCORD_BOT_WEBHOOK}}
